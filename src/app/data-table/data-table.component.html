@@ -1,0 +1,116 @@
+
+<form #f="ngForm" ngForm >
+  <input name="name" ngModel type="text" #i>
+  <input name="fathername" ngModel type="text" #j>
+  <input name="mothername" ngModel type="text" #k>
+  <input name="city" ngModel type="text" #l>
+  <span>{{f.value|json}}</span>
+  <input name="name" type="submit" (click)="addtocollection(f)">
+
+</form>
+<div >
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Father</th>
+      <th>mother</th>
+      <th>City</th>
+    </tr>
+
+
+    <tr *ngFor="let item of collectiondata">
+        <td>{{item.name}}</td>
+        <td>{{item.fathername}}</td>
+        <td>{{item.mothername}}</td>
+        <td>{{item.city}}</td>
+      </tr>
+
+  </table>
+</div>
+<br>
+<mat-nav-list>
+    <mat-list-item *ngFor="let link of links">
+       <a style="display:inline"  matLine href='#'>{{ link }}</a>
+       <!-- <button mat-icon-button (click)="showInfo(link)"> -->
+                <!-- </button> -->
+    </mat-list-item>
+  </mat-nav-list>
+<mat-tab-group style="margin:0px;">
+  <mat-tab label="JavaScript">
+    
+  First Content
+  
+  </mat-tab>
+
+  <mat-tab label="AngularJS">
+    
+      Second Content
+      
+      </mat-tab>
+
+
+      <mat-tab label="Angular">
+    
+          Third Content
+          
+          </mat-tab>
+          <mat-tab label="BootStrap">
+    
+              Fourth Content
+              
+              </mat-tab>
+
+
+
+  <mat-tab label="CSS">
+
+
+      <div>
+  
+          <input type="text">
+        
+        </div>
+
+  </mat-tab>
+  <mat-tab label="NodeJS">
+    
+      <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container #ng1 matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Weight </th>
+              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+        
+  
+  </mat-tab>
+</mat-tab-group>
+<div style="border:1px solid gray;width:200px;height:200px" id="my-element"></div>
+<div></div>
+

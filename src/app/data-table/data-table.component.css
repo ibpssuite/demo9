@@ -1,0 +1,7 @@
+table {
+    width: 100%;
+  }
+  td{
+    background-image: linear-gradient(blue,green,red,orange);
+    box-shadow: 10px 10px 10px grey;
+  }
