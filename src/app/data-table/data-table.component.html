@@ -19,11 +19,13 @@
     </tr>
 
 
-    <tr *ngFor="let item of collectiondata">
+    <tr *ngFor="let item of collectiondata;i as index;">
         <td>{{item.name}}</td>
         <td>{{item.fathername}}</td>
         <td>{{item.mothername}}</td>
         <td>{{item.city}}</td>
+        <td><button type="button" (click)="navigatetoedit(item.name)">Edit</button></td>
+        <td><button type="button" (click)="firefromcollection(i)">Edit</button></td>
       </tr>
 
   </table>
@@ -113,5 +115,10 @@
   </mat-tab>
 </mat-tab-group>
 <div style="border:1px solid gray;width:200px;height:200px" id="my-element"></div>
-<div></div>
+<div >
+  <ul>
+    <li *ngFor="let item of Records ">{{item.id}} Sohan</li>
+  </ul>
+
+</div>
 

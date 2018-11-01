@@ -10,9 +10,13 @@ import { ajax } from 'rxjs/ajax';
 import { map } from 'rxjs/operators';
 import {  of } from 'rxjs';
 import { Subject } from 'rxjs';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { take ,takeUntil,tap} from 'rxjs/operators';
 import {FormsModule} from '@angular/forms';
+import {switchMap} from 'rxjs/operators';
+import { RouterModule, Router } from '@angular/router';
+
  
 
 
@@ -34,12 +38,34 @@ export class DataTableComponent implements OnInit {
   links=['Patna','Delhi','Hyderabad','Singapore','Mumbai','Goa'];
   testvariable:any=0;
   collectiondata:any[]=[];
+  Records;
+  
+
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(http:HttpClient,private route : Router){
+    http.get('https://my-json-server.typicode.com/typicode/demo/posts').subscribe(res=>this.Records=res
+    );
+  
+
+  }
+  navigatetoedit(name:string){
+    this.route.navigate(['/ram',name]);
+    console.log('In Navigate to edit block');
+  }
   
 
   ngOnInit() {
+
+
+
+    const clicks = fromEvent(document, 'click');
+const result = clicks.pipe(switchMap((ev) => interval(1000)));
+result.subscribe(x => console.log(x));
+
+
+
 
 
 
@@ -81,9 +107,9 @@ const positions = click1.pipe(
 );
 positions.subscribe(x => console.log(x));
     const interva = interval(1000);
-const clicks = fromEvent(document, 'click');
-const result = interva.pipe(takeUntil(clicks));
-result.subscribe(x => console.log(x));
+const clicks2 = fromEvent(document, 'click');
+const results = interva.pipe(takeUntil(clicks2));
+results.subscribe(x => console.log(x));
     
 const intervalCount = interval(1000);
 const takeFive = intervalCount.pipe(take(5));
@@ -143,6 +169,11 @@ addtocollection(f){
   
 this.collectiondata.push(f.value);
 console.log(f);
+
+}
+firefromcollection(i:number){
+  this.collectiondata.splice(i,1);
+  console.log('DELETED');
 
 }
 

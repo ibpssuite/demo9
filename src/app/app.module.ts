@@ -12,13 +12,20 @@ import {MatIconModule} from '@angular/material/';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
+import { TestComponent } from './test/test.component';
+import { TestComponentComponent } from './test-component/test-component.component';
+import { RouterModule } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent
+    DataTableComponent,
+    TestComponent,
+    TestComponentComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -30,8 +37,11 @@ import {FormsModule} from '@angular/forms';
     MatIconModule,
     MatSliderModule,
     MatSlideToggleModule,
-    FormsModule
-   
+    FormsModule,
+    HttpClientModule,
+   RouterModule.forRoot([
+     {path:'ram/:id' , component: TestComponentComponent}
+  ])
     
   ],
   providers: [],
