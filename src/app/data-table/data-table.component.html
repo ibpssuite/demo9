@@ -1,4 +1,3 @@
-
 <form #f="ngForm" ngForm >
   <input name="name" ngModel type="text" #i>
   <input name="fathername" ngModel type="text" #j>
@@ -8,27 +7,35 @@
   <input name="name" type="submit" (click)="addtocollection(f)">
 
 </form>
-<div>*******************************************************************************</div>
-<div >
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Father</th>
-      <th>mother</th>
-      <th>City</th>
-    </tr>
-
-
-    <tr *ngFor="let item of collectiondata;i as index;">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Father</th>
+    <th>mother</th>
+    <th>City</th>
+  </tr>
+  <div>
+    <table>
+      <tr *ngFor="let item of collectiondata;i as index;">
         <td>{{item.name}}</td>
         <td>{{item.fathername}}</td>
         <td>{{item.mothername}}</td>
         <td>{{item.city}}</td>
         <td><button type="button" (click)="navigatetoedit(item.name)">Edit</button></td>
-        <td><button type="button" (click)="firefromcollection(i)">Edit</button></td>
+        <td><button type="button" (click)="firefromcollection(i)">Delete</button></td>
       </tr>
+    
+    </table>
 
-  </table>
+  </div>
+ 
+
+
+
+
+
+<div >
+ 
 </div>
 <br>
 <mat-nav-list>
